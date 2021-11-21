@@ -45,7 +45,7 @@ void Display(PNODE Head)
 
 int SearchFirstOcc(PNODE Head, int no)
 {
-    int iCnt =1;
+    int iCnt =0;
     PNODE temp = Head;
 
     while(Head != NULL)
