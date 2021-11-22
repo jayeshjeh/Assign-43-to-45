@@ -45,20 +45,30 @@ void Display(PNODE Head)
 
 int SearchFirstOcc(PNODE Head, int no)
 {
-    int iCnt =0;
+    int iCnt =0, iMnt = 0;
     PNODE temp = Head;
+    PNODE kemp=Head;
+
+   while (kemp->data!=no)
+   {
+      kemp=kemp->next;
+   }
+   if (kemp==NULL)
+   {
+     return 0;
+   }
 
     while(Head != NULL)
     {
         if(temp->data == no)
         {
-            break;
+            iMnt= iCnt;
 
         }
         iCnt++;
         temp = temp->next;
     }
-    return iCnt;
+    return iMnt;
 }
 
 int main()
@@ -70,7 +80,7 @@ int main()
     InsertFirst(&First,40);
     InsertFirst(&First,30);
     InsertFirst(&First,40);
-    InsertFirst(&First,50);
+    InsertFirst(&First,40);
     InsertFirst(&First,20);
 
     Display(First);

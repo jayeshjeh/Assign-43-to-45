@@ -43,47 +43,44 @@ void Display(PNODE Head)
 
 }
 
-int SecLast(PNODE Head)
-{ 
-    int iMax=0,SMax=0;
-    PNODE temp=Head;
-  
-   
-    while (temp!=NULL)
-    {
-      
-        if((temp->data)>iMax)
-        {
-         
-            iMax=temp->data;
-        
-        }
-        else if(SMax<(temp->data))
-        {
-            SMax=temp->data;
-        }
+void SumDigit(PNODE Head)
+{
+    int Sum =0, iDigit=0;
 
-        temp=temp->next;
+    PNODE temp = Head;
+
+    while(temp!= NULL)
+    {
+        while((temp ->data) != 0)
+        {
+            iDigit = (temp->data) % 10;
+            Sum = Sum +iDigit;
+            temp->data = (temp->data) /10;
+        }
+        printf("\t%d\t",Sum);
+        Sum =0;
+        temp= temp->next;
     }
-    return SMax;
-}
+
+}  
+
 
 int main()
 {
     int iret=0, ino=0;
     PNODE First = NULL;
 
-    InsertFirst(&First,10);
-    InsertFirst(&First,22);
+    InsertFirst(&First,11);
+    InsertFirst(&First,20);
+    InsertFirst(&First,55);
+    InsertFirst(&First,32);
+    InsertFirst(&First,40);
     InsertFirst(&First,15);
-    InsertFirst(&First,44);
-    InsertFirst(&First,35);
-    InsertFirst(&First,41);
 
     Display(First);
 
-    iret = SecLast(First);
-    printf("\nSum of LL is : %d\n",iret);
+    SumDigit(First);
+    
 
     return 0;
 }
